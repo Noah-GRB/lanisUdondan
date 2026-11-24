@@ -1,0 +1,23 @@
+
+name: LANiS Explorer Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lanis-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: LANiS installieren
+        run: |
+          python -m pip install pylanis
+
+      - name: Schulen abrufen
+        run: |
+          lanis --format markdown schools
